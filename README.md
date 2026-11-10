@@ -1,0 +1,1 @@
+Solve the 8 problems of typescript and also write the two blogs (type narrowing and type vs interface)
