@@ -14,3 +14,9 @@ function processInput (input: string | number | boolean ):string | number{
     }
     return input ? 'Active' : 'Inactive';
 }
+
+
+function formatCoordinate (coordinate : [number, number, string]): string{
+    const [latitude,longitude,locationName] = coordinate;
+    return `Location:${locationName} (${latitude}, ${longitude})`;
+}
