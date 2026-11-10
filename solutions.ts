@@ -30,3 +30,17 @@ function concatenateArrarys<T>(...arrays: T[][]): T[]{
     }
     return combined;
 }
+
+
+interface Course{
+    title: string;
+    students : number;
+    isPublished : boolean
+
+}
+
+function getPopularCourses( courses : Course[], minStudents : number) : Course[]{
+    return courses.filter((course: Course): boolean => {
+        return course.isPublished && course.students >= minStudents;
+    });
+}
