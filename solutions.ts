@@ -44,3 +44,51 @@ function getPopularCourses( courses : Course[], minStudents : number) : Course[]
         return course.isPublished && course.students >= minStudents;
     });
 }
+
+
+
+function pluckValues<T, K extends keyof T>(items : T[], Key : K) : T[K][]{
+    return items.map((item :T): T[K] => item[Key]);
+}
+
+
+class Employee{
+    protected name: string;
+    protected basicSalary: number;
+
+    constructor(name: string, basicSalary: number){
+        this.name = name;
+        this.basicSalary = basicSalary;
+    }
+
+    getDetails(): string{
+      return  `Employee Name: ${this.name}, Basic Salary: ${this.basicSalary}`;
+    }
+}
+
+
+class Manager extends Employee{
+    private department: string;
+
+    constructor(name: string, basicSalary: number, department: string){
+        super(name, basicSalary);
+        this.department = department;
+    }
+    getRoleInfo(): string{
+        return `Manager of ${this.department}:${this.name}`;
+    }
+}
+
+
+function validateAgeAsync(age: number): Promise<string> {
+    return new Promise<string>((resolve: (value : string | PromiseLike<string>)=>void,
+reject : (reason?: unknown)=>void): void =>{
+    if(age< 18){
+        reject(new Error('Access Denied: Must be 18 or older'));
+        return;
+    }
+    setTimeout(() : void=> {
+        resolve('Access Granted');
+    },1000)
+})
+}
